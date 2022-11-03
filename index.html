@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,27 +9,68 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+    </style>
 
 </head>
+
 <body>
     <header>BuzzQuizz</header>
 
 
+
+
+    <!-------------------------------tela 2 (ricardo)--------------------------------------->
+
+    <div class="tela2 hidden">
+        <section class="tituloQuizz">SALVE</section>
+
+        <section class="fundo">
+            <div class="caixaDePerguntas">
+                <div class="fundoPergunta">
+                    <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
+                </div>
+                <div class="alternativa">
+                    <img src="Imagens-teste/Rectangle 34.png">
+                    Salve
+                </div>
+                <div class="alternativa">
+                    <img src="Imagens-teste/Rectangle 34.png">
+                    Salve
+                </div>
+                <div class="alternativa">
+                    <img src="Imagens-teste/Rectangle 34.png">
+                    Salve
+                </div>
+                <div class="alternativa">
+                    <img src="Imagens-teste/Rectangle 34.png">
+                    Salve
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!--------------------------------fim da tela 2!---------------------------------------->
+
+
     <!--tela 3 (pedro)-->
     <section class="tela3 hidden">Comece pelo começo <div class="caixaA">
-        <input class="inputTela3" type="text" placeholder="Título do seu quizz">
-        <input class="inputTela3" type="text" placeholder="URL da imagem do seu quizz">
-        <input class="inputTela3" type="text" placeholder="Quantidade de perguntas do quizz">
-        <input class="inputTela3" type="text" placeholder="Quantidade de níveis do quizz">
-    </div>
-    <button class="prosseguir">Prosseguir pra criar perguntas</button></section>
+            <input class="inputTela3" type="text" placeholder="Título do seu quizz">
+            <input class="inputTela3" type="text" placeholder="URL da imagem do seu quizz">
+            <input class="inputTela3" type="text" placeholder="Quantidade de perguntas do quizz">
+            <input class="inputTela3" type="text" placeholder="Quantidade de níveis do quizz">
+        </div>
+        <button class="prosseguir">Prosseguir pra criar perguntas</button>
+    </section>
 
     <section class="tela3 hidden">
-        Crie suas perguntas 
+        Crie suas perguntas
         <div class="caixaPergunta">
-           <p class="perg">Pergunta 1</p>
+            <p class="perg">Pergunta 1</p>
             <input class='inputTela3' placeholder='Texto da pergunta' type="text">
             <input class='inputTela3 lastInputMarg' placeholder='Cor de fundo da pergunta' type="text">
             <p class="perg"></p>Resposta correta</p>
@@ -44,8 +86,10 @@
             <input class='inputTela3' placeholder='Resposta incorreta 3' type="text">
             <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 3' type="text">
         </div>
-        <div class="caixaFechada">Pergunta 2 <ion-icon class="edit" name="create-outline"></ion-icon></div>
-        <div class="caixaFechada">Pergunta 3 <ion-icon class="edit" name="create-outline"></ion-icon></div>
+        <div class="caixaFechada">Pergunta 2 <ion-icon class="edit" name="create-outline"></ion-icon>
+        </div>
+        <div class="caixaFechada">Pergunta 3 <ion-icon class="edit" name="create-outline"></ion-icon>
+        </div>
         <button class="prosseguir">Prosseguir pra criar níveis</button>
     </section>
 
@@ -58,13 +102,20 @@
             <input class="inputTela3" placeholder="URL da imagem do nível" type="text">
             <input class="inputTela3" placeholder="Descrição do nível" type="text">
         </div>
-        <div class="caixaFechada">Nível 2 <ion-icon class="edit" name="create-outline"></ion-icon></div>
-        <div class="caixaFechada">Nível 3 <ion-icon class="edit" name="create-outline"></ion-icon></div>
+        <div class="caixaFechada">Nível 2 <ion-icon class="edit" name="create-outline"></ion-icon>
+        </div>
+        <div class="caixaFechada">Nível 3 <ion-icon class="edit" name="create-outline"></ion-icon>
+        </div>
         <button class="prosseguir">Finalizar Quizz</button>
     </section>
     <section class="tela3 hidden">
         Seu quizz está pronto!
-        <div class="divimgt3"><img src="https://ichef.bbci.co.uk/news/640/cpsprodpb/9947/production/_99893293_tierraplana.jpg" class="imgt3"><div class="gradient"></div><p class="tt3">O quão Terraplanista é você?</p></div>
+        <div class="divimgt3"><img
+                src="https://ichef.bbci.co.uk/news/640/cpsprodpb/9947/production/_99893293_tierraplana.jpg"
+                class="imgt3">
+            <div class="gradient"></div>
+            <p class="tt3">O quão Terraplanista é você?</p>
+        </div>
         <button class="prosseguir2">Acessar Quizz</button>
         <button class="home">Voltar pra home</button>
     </section>
@@ -75,4 +126,5 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,16 +1,84 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,40 +86,62 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-*{
-    box-sizing: border-box;
+
+* {
+	box-sizing: border-box;
 }
 
 
 /*FIM DO CSS RESET*/
 
-body{font-family: 'Roboto', sans-serif;
-background-color: #fafafa;}
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #fafafa;
+}
 
-header{
+header {
 	position: fixed;
 	width: 100%;
 	height: 70px;
@@ -71,11 +161,105 @@ header{
 	z-index: 4;
 }
 
+/*-------------------------------------STYLE DA TELA 2-------------------------------------*/
+
+/*----começo do mobile----*/
+@media (max-width:1099px) {
+	.tituloQuizz {
+		height: 142px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 69px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 19px;
+		line-height: 22px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: #FFFFFF;
+		background: url("https://http.cat/411.jpg");
+	}
+
+	
+
+	.fundo {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		background-color: #E5E5E5;
+		padding-top: 211px;
+	}
+
+	.caixaDePerguntas {
+		height: 436px;
+		max-width: 759px;
+		margin-top: 24px;
+		margin-bottom: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		background-color: #FFFFFF;
+		padding: 18px;
+	}
+
+	.fundoPergunta{
+		height: 89px;
+		width: 100%;
+		max-width: 688px;
+		padding: 20px;
+		background-color: #434CA0;
+		word-break: normal;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 19px;
+		line-height: 22px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+
+		color: #FFFFFF;
+	}
 
 
+	.alternativa {
+		max-width: 330px;
+		max-height: 176px;
+		width: 44%;
+		height: 26%;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 13px;
+		line-height: 15px;
+		display: flex;
+		flex-direction: column;
+		margin-right: 12px;
+		background-color: red;
+
+		color: #000000;
+	}
+
+	.alternativa img {
+		width: 100%;
+		height: ;
+		
+		margin-right: 12px;
+	}
+	/*----fim do mobile----*/
+}
+
+/*---------------------------------FIM DO STYLE DA TELA 2----------------------------------*/
 
 /*-------------------------------------STYLE DA TELA 3-------------------------------------*/
-.tela3{
+.tela3 {
 	width: 100%;
 	margin-top: 140px;
 	font-family: Roboto;
@@ -88,159 +272,178 @@ header{
 	align-items: center;
 	position: absolute;
 }
-.caixaA{
+
+.caixaA {
 	width: 600px;
 	height: 256px;
 	background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-align-items: center;
-margin-block: 27px;
-display: flex;
-flex-direction: column;
-justify-content: center;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+	align-items: center;
+	margin-block: 27px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
-.inputTela3{
+
+.inputTela3 {
 	margin-block: 4.5px;
 	border: 1px solid #D1D1D1;
-border-radius: 5px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 19px;
-line-height: 22px;
-color: black;
-width: 564px;
-height: 46px;
-padding-left: 20px;
-outline: none;
-}
-.inputTela3::placeholder{
+	border-radius: 5px;
 	font-family: 'Roboto';
-font-style: italic;
-font-weight: 400;
-font-size: 19px;
-line-height: 22px;
-color: #BABABA;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 22px;
+	color: black;
+	width: 564px;
+	height: 46px;
+	padding-left: 20px;
+	outline: none;
 }
-.prosseguir{
+
+.inputTela3::placeholder {
+	font-family: 'Roboto';
+	font-style: italic;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 22px;
+	color: #BABABA;
+}
+
+.prosseguir {
 	margin-block: 58px;
-	
+
 	padding-inline: 40px;
-height: 54px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 25px;
-display: flex;
-justify-content: center;
-align-items: center;
-color: #FFF5F4;
-background: #EC362D;
-border-radius: 15px;
-border: none;
+	height: 54px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #FFF5F4;
+	background: #EC362D;
+	border-radius: 15px;
+	border: none;
 }
-.prosseguir2{
+
+.prosseguir2 {
 	margin-top: 58px;
-	
+
 	padding-inline: 40px;
-height: 54px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 25px;
-display: flex;
-justify-content: center;
-align-items: center;
-color: #FFF5F4;
-background: #EC362D;
-border-radius: 15px;
-border: none;
+	height: 54px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #FFF5F4;
+	background: #EC362D;
+	border-radius: 15px;
+	border: none;
 }
-.prosseguir:hover{
+
+.prosseguir:hover {
 	cursor: pointer;
 }
-.prosseguir2:hover{
+
+.prosseguir2:hover {
 	cursor: pointer;
 }
-.caixaPergunta{
+
+.caixaPergunta {
 	margin-top: 24px;
 	background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-width: 600px;
-height: 825px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding: 17px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 23px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+	width: 600px;
+	height: 825px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 17px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
 
 }
-.caixaPergunta > *{
+
+.caixaPergunta>* {
 	margin-block: 7px;
 }
-.lastInputMarg{
+
+.lastInputMarg {
 	margin-bottom: 18px;
 }
-.perg{
+
+.perg {
 	margin-block: 12px;
 }
-.caixaFechada{
+
+.caixaFechada {
 	width: 600px;
-height: 74px;
-background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-display: flex;
-justify-content: space-between;
-padding-inline: 20px;
-align-items: center;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 23px;
-margin-top: 22px;
+	height: 74px;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+	display: flex;
+	justify-content: space-between;
+	padding-inline: 20px;
+	align-items: center;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
+	margin-top: 22px;
 }
-.edit{
+
+.edit {
 	font-size: 26px;
 }
-.caixaFechada:hover{
+
+.caixaFechada:hover {
 	cursor: pointer;
 }
-.caixaN{
+
+.caixaN {
 	width: 600px;
 	height: 316px;
 	background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-margin-top: 40px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding-inline: 17px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-inline: 17px;
 }
-.caixaN > *{
+
+.caixaN>* {
 	margin-block: 7px;
 }
-.imgt3{
+
+.imgt3 {
 	width: 500px;
-height: 266px;
-object-fit: cover;
-border-radius: 5px;
-z-index: 0;
-position: absolute;
+	height: 266px;
+	object-fit: cover;
+	border-radius: 5px;
+	z-index: 0;
+	position: absolute;
 }
-.divimgt3{
-position: relative;
-width: 500px;
-height: 266px;
-margin-top: 45px;
+
+.divimgt3 {
+	position: relative;
+	width: 500px;
+	height: 266px;
+	margin-top: 45px;
 }
-.gradient{
+
+.gradient {
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
 	z-index: 1;
 	width: 500px;
@@ -248,34 +451,37 @@ margin-top: 45px;
 	position: absolute;
 	border-radius: 5px;
 }
-.tt3{
+
+.tt3 {
 	font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 23px;
-line-height: 27px;
-color: #FFFFFF;
-position: absolute;
-left: 24px;
-bottom: 24px;
-z-index: 2;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 23px;
+	line-height: 27px;
+	color: #FFFFFF;
+	position: absolute;
+	left: 24px;
+	bottom: 24px;
+	z-index: 2;
 }
-.home{
+
+.home {
 	margin-top: 20px;
 	margin-bottom: 50px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 25px;
-display: flex;
-justify-content: center;
-align-items: center;
-color: #818181;
-background: none;
-border: none;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #818181;
+	background: none;
+	border: none;
 }
-.home:hover{
+
+.home:hover {
 	cursor: pointer;
 }
 
@@ -283,6 +489,6 @@ border: none;
 /*----------------------------------FIM DO STYLE DA TELA 3---------------------------------------*/
 
 
-.hidden{
+.hidden {
 	display: none;
 }
