@@ -68,13 +68,13 @@ header{
 	font-size: 37px;
 	line-height: 43px;
 	color: #FFFFFF;
-	z-index: 2;
+	z-index: 4;
 }
 
 
 
 
-/*STYLE DA TELA 3*/
+/*-------------------------------------STYLE DA TELA 3-------------------------------------*/
 .tela3{
 	width: 100%;
 	margin-top: 140px;
@@ -124,7 +124,26 @@ color: #BABABA;
 }
 .prosseguir{
 	margin-block: 58px;
-	width: 367.72px;
+	
+	padding-inline: 40px;
+height: 54px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 25px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #FFF5F4;
+background: #EC362D;
+border-radius: 15px;
+border: none;
+}
+.prosseguir2{
+	margin-top: 58px;
+	
+	padding-inline: 40px;
 height: 54px;
 font-family: 'Roboto';
 font-style: normal;
@@ -142,11 +161,128 @@ border: none;
 .prosseguir:hover{
 	cursor: pointer;
 }
+.prosseguir2:hover{
+	cursor: pointer;
+}
+.caixaPergunta{
+	margin-top: 24px;
+	background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+width: 600px;
+height: 825px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 17px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 23px;
+
+}
+.caixaPergunta > *{
+	margin-block: 7px;
+}
+.lastInputMarg{
+	margin-bottom: 18px;
+}
+.perg{
+	margin-block: 12px;
+}
+.caixaFechada{
+	width: 600px;
+height: 74px;
+background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+display: flex;
+justify-content: space-between;
+padding-inline: 20px;
+align-items: center;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 23px;
+margin-top: 22px;
+}
+.edit{
+	font-size: 26px;
+}
+.caixaFechada:hover{
+	cursor: pointer;
+}
+.caixaN{
+	width: 600px;
+	height: 316px;
+	background: #FFFFFF;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding-inline: 17px;
+}
+.caixaN > *{
+	margin-block: 7px;
+}
+.imgt3{
+	width: 500px;
+height: 266px;
+object-fit: cover;
+border-radius: 5px;
+z-index: 0;
+position: absolute;
+}
+.divimgt3{
+position: relative;
+width: 500px;
+height: 266px;
+margin-top: 45px;
+}
+.gradient{
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
+	z-index: 1;
+	width: 500px;
+	height: 266px;
+	position: absolute;
+	border-radius: 5px;
+}
+.tt3{
+	font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 23px;
+line-height: 27px;
+color: #FFFFFF;
+position: absolute;
+left: 24px;
+bottom: 24px;
+z-index: 2;
+}
+.home{
+	margin-top: 20px;
+	margin-bottom: 50px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 25px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #818181;
+background: none;
+border: none;
+}
+.home:hover{
+	cursor: pointer;
+}
 
 
+/*----------------------------------FIM DO STYLE DA TELA 3---------------------------------------*/
 
 
-/*FIM DO STYLE DA TELA 3*/
 .hidden{
 	display: none;
 }

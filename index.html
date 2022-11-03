@@ -25,11 +25,53 @@
     </div>
     <button class="prosseguir">Prosseguir pra criar perguntas</button></section>
 
-    <section class="tela3"></section>
-    <section class="tela3"></section>
-    <section class="tela3"></section>
+    <section class="tela3 hidden">
+        Crie suas perguntas 
+        <div class="caixaPergunta">
+           <p class="perg">Pergunta 1</p>
+            <input class='inputTela3' placeholder='Texto da pergunta' type="text">
+            <input class='inputTela3 lastInputMarg' placeholder='Cor de fundo da pergunta' type="text">
+            <p class="perg"></p>Resposta correta</p>
+            <input class='inputTela3' placeholder='Resposta correta' type="text">
+            <input class='inputTela3 lastInputMarg' placeholder='URL da imagem' type="text">
+            <p class="perg"></p>Respostas incorretas</p>
+            <input class='inputTela3' placeholder='Resposta incorreta 1' type="text">
+            <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 1' type="text">
+
+            <input class='inputTela3' placeholder='Resposta incorreta 2' type="text">
+            <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 2' type="text">
+
+            <input class='inputTela3' placeholder='Resposta incorreta 3' type="text">
+            <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 3' type="text">
+        </div>
+        <div class="caixaFechada">Pergunta 2 <ion-icon class="edit" name="create-outline"></ion-icon></div>
+        <div class="caixaFechada">Pergunta 3 <ion-icon class="edit" name="create-outline"></ion-icon></div>
+        <button class="prosseguir">Prosseguir pra criar níveis</button>
+    </section>
+
+    <section class="tela3 hidden">
+        Agora, decida os níveis
+        <div class="caixaN">
+            Nível 1
+            <input class="inputTela3" placeholder="Título do nível" type="text">
+            <input class="inputTela3" placeholder="% de acerto mínima" type="text">
+            <input class="inputTela3" placeholder="URL da imagem do nível" type="text">
+            <input class="inputTela3" placeholder="Descrição do nível" type="text">
+        </div>
+        <div class="caixaFechada">Nível 2 <ion-icon class="edit" name="create-outline"></ion-icon></div>
+        <div class="caixaFechada">Nível 3 <ion-icon class="edit" name="create-outline"></ion-icon></div>
+        <button class="prosseguir">Finalizar Quizz</button>
+    </section>
+    <section class="tela3 hidden">
+        Seu quizz está pronto!
+        <div class="divimgt3"><img src="https://ichef.bbci.co.uk/news/640/cpsprodpb/9947/production/_99893293_tierraplana.jpg" class="imgt3"><div class="gradient"></div><p class="tt3">O quão Terraplanista é você?</p></div>
+        <button class="prosseguir2">Acessar Quizz</button>
+        <button class="home">Voltar pra home</button>
+    </section>
     <!--fim da tela 3 (pedro)-->
 
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
