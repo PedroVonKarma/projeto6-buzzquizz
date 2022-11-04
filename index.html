@@ -58,19 +58,20 @@
 
 
     <!--tela 3 (pedro)-->
-    <section class="tela3 hidden">Comece pelo começo <div class="caixaA">
-            <input class="inputTela3" type="text" placeholder="Título do seu quizz">
-            <input class="inputTela3" type="text" placeholder="URL da imagem do seu quizz">
-            <input class="inputTela3" type="text" placeholder="Quantidade de perguntas do quizz">
-            <input class="inputTela3" type="text" placeholder="Quantidade de níveis do quizz">
+    <section id='3a' class="tela3">Comece pelo começo <div class="caixaA">
+            <input class="inputTela3 titulo" type="text" placeholder="Título do seu quizz">
+            <input class="inputTela3 url" type="text" placeholder="URL da imagem do seu quizz">
+            <input class="inputTela3 qtdP" type="text" placeholder="Quantidade de perguntas do quizz">
+            <input class="inputTela3 qtdN" type="text" placeholder="Quantidade de níveis do quizz">
         </div>
-        <button class="prosseguir">Prosseguir pra criar perguntas</button>
+        <button onclick='pegarDados()' class="prosseguir">Prosseguir pra criar perguntas</button>
     </section>
 
-    <section class="tela3 hidden">
+    <section id='3b' class="tela3 hidden">
         Crie suas perguntas
         <div class="caixaPergunta">
-            <p class="perg">Pergunta 1</p>
+            <div onclick='selecionarPergunta(this)' class="preg">Pergunta 1 <ion-icon class="edit hidden" name="create-outline"></ion-icon>
+            </div><div class="info">
             <input class='inputTela3' placeholder='Texto da pergunta' type="text">
             <input class='inputTela3 lastInputMarg' placeholder='Cor de fundo da pergunta' type="text">
             <p class="perg"></p>Resposta correta</p>
@@ -84,16 +85,13 @@
             <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 2' type="text">
 
             <input class='inputTela3' placeholder='Resposta incorreta 3' type="text">
-            <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 3' type="text">
+            <input class='inputTela3 lastInputMarg' placeholder='URL da imagem 3' type="text"></div>
         </div>
-        <div class="caixaFechada">Pergunta 2 <ion-icon class="edit" name="create-outline"></ion-icon>
-        </div>
-        <div class="caixaFechada">Pergunta 3 <ion-icon class="edit" name="create-outline"></ion-icon>
-        </div>
-        <button class="prosseguir">Prosseguir pra criar níveis</button>
+        
+        
     </section>
 
-    <section class="tela3 hidden">
+    <section id='3c' class="tela3 hidden">
         Agora, decida os níveis
         <div class="caixaN">
             Nível 1
@@ -108,7 +106,7 @@
         </div>
         <button class="prosseguir">Finalizar Quizz</button>
     </section>
-    <section class="tela3 hidden">
+    <section id='3d' class="tela3 hidden">
         Seu quizz está pronto!
         <div class="divimgt3"><img
                 src="https://ichef.bbci.co.uk/news/640/cpsprodpb/9947/production/_99893293_tierraplana.jpg"
