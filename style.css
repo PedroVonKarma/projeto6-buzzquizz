@@ -496,3 +496,116 @@ header {
 .hidden {
 	display: none;
 }
+
+
+/*----------------------------------STYLE DA TELA 1---------------------------------------*/
+
+.motherbox{
+	display:flex;
+	width: 100%;
+	height: 955px;
+	margin-top: 70px;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.containerCriar{
+	width: 1050px;
+	height: 181px;
+	
+	border: 1px dashed #D4D4D4;
+	border-radius: 5px;  
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.mensagemCriar{
+	width: 250px;
+	font-size: 20px;
+	font-weight: 400;
+	color: #B9B9B9;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.criarQuizz{
+	width: 151px;
+	height: 40px;
+	font-size: 21px;
+	font-weight: 400;
+	color:#EC362D;
+	border: 1px dashed #EC362D;
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.criarQuizz:hover{
+	cursor: pointer;
+}
+
+.quizzAPI{
+	width: 1050px;
+	margin-top: 70px;
+}
+
+h5{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.containerAPI{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+	
+}
+
+.imagemQuizz{
+	width: 340px;
+	height: 181px;
+	border-radius: 5px;
+}
+
+.inicioQuizz{
+	position: relative;
+}
+
+h4{
+	font-size: 19px;
+	font-weight: 400;
+	color: #FFFFFF;
+	position: absolute;
+	left: 10px;
+	bottom: 20px;
+	z-index: 1;
+}
+
+.gradientTela1{
+	position: absolute;
+	width: 340px;
+	height: 181px;
+	border-radius: 5px;
+	background: linear-gradient(to bottom, #FFFFFF00 0%, #00000080 50%, #000000 100%);
+	left: 0;
+	bottom: 3px;
+	z-index: 0;
+}
+
+.inicioQuizz:hover{
+	cursor: pointer;
+}
+
+.hidden{
+	display: none;
+}
