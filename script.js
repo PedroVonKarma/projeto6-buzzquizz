@@ -62,3 +62,8 @@ function selecionarPergunta(divison){
 }
 
 //fim do script da tela 3
+
+
+//início do script da tela 1
+
+

@@ -500,26 +500,60 @@ header {
 
 /*----------------------------------STYLE DA TELA 1---------------------------------------*/
 
+
 .motherbox{
 	display:flex;
 	width: 100%;
-	height: 955px;
 	margin-top: 70px;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	box-sizing: border-box;
+	padding-top: 10px;
 }
 
 .containerCriar{
 	width: 1050px;
 	height: 181px;
-	
+	margin-top: 70px;
 	border: 1px dashed #D4D4D4;
 	border-radius: 5px;  
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+}
+
+.quizzUsuario{
+	width: 1050px;
+	
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-top: 70px;
+}
+
+.todosUsuario{
+	display: flex;
+	height: 50px;
+	align-items: center;
+}
+
+.icone{
+	position: relative;
+	margin-left: 10px;
+	margin-bottom: 35px;
+}
+
+.bola{
+	position: absolute;
+}
+
+.cruz{
+	position: absolute;
+	left: 9px;
+	top: 8px;
 }
 
 .mensagemCriar{
@@ -559,6 +593,7 @@ header {
 h5{
 	font-size: 20px;
 	font-weight: 700;
+	margin-bottom: 10px;
 }
 
 .containerAPI{
@@ -569,6 +604,15 @@ h5{
 	align-items: center;
 	justify-content: space-around;
 	
+}
+
+.containerUsuario{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .imagemQuizz{
@@ -603,6 +647,10 @@ h4{
 }
 
 .inicioQuizz:hover{
+	cursor: pointer;
+}
+
+.icone:hover{
 	cursor: pointer;
 }
 
