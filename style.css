@@ -384,23 +384,7 @@ header {
 	margin-bottom: 18px;
 }
 
-.caixaFechada {
-	width: 600px;
-	height: 74px;
-	background: #FFFFFF;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-	display: flex;
-	justify-content: space-between;
-	padding-inline: 20px;
-	align-items: center;
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 20px;
-	line-height: 23px;
-	margin-top: 22px;
-	overflow: hidden;
-}
+
 
 .edit {
 	font-size: 26px;
@@ -419,11 +403,25 @@ header {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding-inline: 17px;
+	padding: 17px;
+	transition: all linear 0.4s;
 }
 
 .caixaN>* {
 	margin-block: 7px;
+}
+
+.caixaFechada {
+	width: 600px;
+	height: 74px;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+	display: flex;
+	justify-content: space-between;
+	padding-inline: 20px;
+	align-items: center;
+	margin-top: 22px;
+	overflow: hidden;
 }
 
 .imgt3 {
@@ -488,7 +486,6 @@ header {
 	justify-content: space-between;
 	width: 100%;
 }
-
 
 /*----------------------------------FIM DO STYLE DA TELA 3---------------------------------------*/
 
