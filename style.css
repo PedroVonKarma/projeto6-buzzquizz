@@ -164,7 +164,13 @@ header {
 /*-------------------------------------STYLE DA TELA 2-------------------------------------*/
 
 /*----começo do mobile----*/
-@media (max-width:1099px) {
+
+.centralizada{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
 	.tituloQuizz {
 		height: 142px;
 		width: 100%;
@@ -182,34 +188,44 @@ header {
 		align-items: center;
 		text-align: center;
 		color: #FFFFFF;
-		background: url("https://http.cat/411.jpg");
+		z-index: 3;;
+	}
+
+	.fundoQuizz img{
+		height: 142px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 69px;
+		z-index: 2;;
 	}
 
 	
 
 	.fundo {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		background-color: #E5E5E5;
-		padding-top: 211px;
+		display: block;
+	   background-color: #e5e5e5;
+	   padding-top: 212px;
 	}
 
 	.caixaDePerguntas {
-		height: 436px;
-		max-width: 759px;
+		height: 676px;
+		width: 760px;
+		max-width: 760px;
 		margin-top: 24px;
 		margin-bottom: 4px;
 		display: flex;
-		align-items: center;
 		justify-content: center;
 		flex-wrap: wrap;
 		background-color: #FFFFFF;
-		padding: 18px;
+		padding-top: 18px;
+		padding-bottom: 18px;
 	}
 
 	.fundoPergunta{
-		height: 89px;
+		height: 138px;
 		width: 100%;
 		max-width: 688px;
 		padding: 20px;
@@ -218,7 +234,7 @@ header {
 		font-family: 'Roboto';
 		font-style: normal;
 		font-weight: 700;
-		font-size: 19px;
+		font-size: 23px;
 		line-height: 22px;
 		display: flex;
 		justify-content: center;
@@ -230,10 +246,7 @@ header {
 
 
 	.alternativa {
-		max-width: 330px;
-		max-height: 176px;
-		width: 44%;
-		height: 26%;
+		width: 330px;
 		font-family: 'Roboto';
 		font-style: normal;
 		font-weight: 700;
@@ -241,19 +254,19 @@ header {
 		line-height: 15px;
 		display: flex;
 		flex-direction: column;
-		margin-right: 12px;
-		background-color: red;
+		margin-left: 12px;
 
 		color: #000000;
 	}
 
 	.alternativa img {
-		width: 100%;
+		width: 330px;
+		height: 175px;
 		
-		margin-right: 12px;
+		
 	}
 	/*----fim do mobile----*/
-}
+
 
 /*---------------------------------FIM DO STYLE DA TELA 2----------------------------------*/
 
