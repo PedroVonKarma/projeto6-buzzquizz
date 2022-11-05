@@ -486,6 +486,14 @@ header {
 	justify-content: space-between;
 	width: 100%;
 }
+@media (max-width:1099px) {
+	.caixaA, .caixaDePerguntas, .caixaN, .caixaFechada, .divimgt3{
+		width: 100%;
+	}
+	.divimgt3{
+		padding-inline: 18px;
+	}
+}
 
 /*----------------------------------FIM DO STYLE DA TELA 3---------------------------------------*/
 
