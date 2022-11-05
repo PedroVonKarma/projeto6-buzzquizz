@@ -11,30 +11,30 @@ const tela3a = document.getElementById('3a')
 const tela3b = document.getElementById('3b')
 const tela3c = document.getElementById('3c')
 const tela3d = document.getElementById('3d')
-function pegarDados(){
+function pegarDados() {
     titulo = document.querySelector('.titulo').value
     url = document.querySelector('.url').value
     qtdP = document.querySelector('.qtdP').value
     qtdN = document.querySelector('.qtdN').value
-    if(titulo.length>19 && titulo.length<66){
-        if(url.substring(0, 8) === 'https://'){
-            if(qtdP>2 && qtdN>1){
+    if (titulo.length > 19 && titulo.length < 66) {
+        if (url.substring(0, 8) === 'https://') {
+            if (qtdP > 2 && qtdN > 1) {
                 tela3a.classList.add('hidden');
                 tela3b.classList.remove('hidden');
                 adicionarXPerguntas(qtdP);
                 adicionarXNiveis(qtdN);
                 adicionarTelaFinal(titulo, url);
-            } else{
-        alert('Preencha os dados corretamente')
-    }
-        }else{
-        alert('Preencha os dados corretamente')
-    }
-    } else{
+            } else {
+                alert('Preencha os dados corretamente')
+            }
+        } else {
+            alert('Preencha os dados corretamente')
+        }
+    } else {
         alert('Preencha os dados corretamente')
     }
 }
-function adicionarXPerguntas(x){
+function adicionarXPerguntas(x) {
     tela3b.innerHTML = `Crie suas perguntas<div class="caixaPergunta p0">
     <div onclick='selecionarPergunta(this)' class="preg">Pergunta 1 <ion-icon class="edit hidden" name="create-outline"></ion-icon>
     </div><div class="info">
@@ -53,9 +53,9 @@ function adicionarXPerguntas(x){
     <input class='inputTela3 fp3' placeholder='Resposta incorreta 3' type="text">
     <input class='inputTela3 lastInputMarg fimg3' placeholder='URL da imagem 3' type="text"></div>
 </div>`
-    for(let i=0; i<x-1; i++){
-        tela3b.innerHTML += `<div class="caixaPergunta caixaFechada p${i+1}">
-        <div onclick='selecionarPergunta(this)' class="preg">Pergunta ${i+2} <ion-icon class="edit" name="create-outline"></ion-icon>
+    for (let i = 0; i < x - 1; i++) {
+        tela3b.innerHTML += `<div class="caixaPergunta caixaFechada p${i + 1}">
+        <div onclick='selecionarPergunta(this)' class="preg">Pergunta ${i + 2} <ion-icon class="edit" name="create-outline"></ion-icon>
         </div><div class="info hidden">
         <input class='inputTela3 txtp' placeholder='Texto da pergunta' type="text">
         <input class='inputTela3 lastInputMarg corp' placeholder='Cor de fundo da pergunta' type="text">
@@ -75,7 +75,7 @@ function adicionarXPerguntas(x){
     }
     tela3b.innerHTML += `<button onclick='salvarPerguntas()' class="prosseguir">Prosseguir pra criar níveis</button>`
 }
-function adicionarXNiveis(x){
+function adicionarXNiveis(x) {
     tela3c.innerHTML = `Agora, decida os níveis<div class="caixaN n0">
     <div onclick='selecionarPergunta(this)' class="preg">Nível 1 <ion-icon class="edit hidden" name="create-outline"></ion-icon>
     </div><div class="info"> 
@@ -84,9 +84,9 @@ function adicionarXNiveis(x){
     <input class="inputTela3 m3" placeholder="URL da imagem do nível" type="text">
     <input class="inputTela3 m4" placeholder="Descrição do nível" type="text">
 </div></div>`
-    for(let i=0; i<x-1; i++){
-        tela3c.innerHTML += `<div class="caixaN caixaFechada n${i+1}">
-            <div onclick='selecionarPergunta(this)' class="preg">Nível ${i+2} <ion-icon class="edit" name="create-outline"></ion-icon>
+    for (let i = 0; i < x - 1; i++) {
+        tela3c.innerHTML += `<div class="caixaN caixaFechada n${i + 1}">
+            <div onclick='selecionarPergunta(this)' class="preg">Nível ${i + 2} <ion-icon class="edit" name="create-outline"></ion-icon>
             </div><div class="info hidden"> 
             <input class="inputTela3 m1" placeholder="Título do nível" type="text">
             <input class="inputTela3 m2" placeholder="% de acerto mínima" type="text">
@@ -96,7 +96,7 @@ function adicionarXNiveis(x){
     }
     tela3c.innerHTML += `<button onclick='salvarNiveis()' class="prosseguir">Finalizar Quizz</button>`
 }
-function selecionarPergunta(divison){
+function selecionarPergunta(divison) {
     const x = divison.parentElement
     x.classList.toggle('caixaFechada');
     const edit = x.querySelector('.edit')
@@ -106,7 +106,7 @@ function selecionarPergunta(divison){
 }
 let perguntas3;
 let ubjeito;
-function salvarPerguntas(){
+function salvarPerguntas() {
     perguntas3 = [];
     let perguntaAtual;
     let tit;
@@ -120,7 +120,7 @@ function salvarPerguntas(){
     let fimg2;
     let fp3;
     let fimg3;
-    for(let i=0; i<qtdP;i++){
+    for (let i = 0; i < qtdP; i++) {
         perguntaAtual = document.querySelector(`.p${i}`);
         tit = perguntaAtual.querySelector('.txtp').value
         cor3 = perguntaAtual.querySelector('.corp').value
@@ -132,29 +132,29 @@ function salvarPerguntas(){
         fimg2 = perguntaAtual.querySelector('.fimg2').value
         fp3 = perguntaAtual.querySelector('.fp3').value
         fimg3 = perguntaAtual.querySelector('.fimg3').value
-        if(tit.length<20){
+        if (tit.length < 20) {
             alert('Preencha os dados corretamente')
             return
         }
-        if(cor3.length !== 7 || cor3[0] !== '#'){
+        if (cor3.length !== 7 || cor3[0] !== '#') {
             alert('Preencha os dados corretamente')
             return
         }
-        if(trup === '' || fp ===''){
+        if (trup === '' || fp === '') {
             alert('Preencha os dados corretamente')
             return
         }
-        if(truimg.substring(0, 8) !== 'https://' || fimg.substring(0, 8) !== 'https://'){
+        if (truimg.substring(0, 8) !== 'https://' || fimg.substring(0, 8) !== 'https://') {
             alert('Preencha os dados corretamente')
             return
         }
-        if(fimg2 !== '' && fimg2.substring(0, 8) !== 'https://'){
+        if (fimg2 !== '' && fimg2.substring(0, 8) !== 'https://') {
             alert('Preencha os dados corretamente')
-            return 
+            return
         }
-        if(fimg3 !== '' && fimg3.substring(0, 8) !== 'https://'){
+        if (fimg3 !== '' && fimg3.substring(0, 8) !== 'https://') {
             alert('Preencha os dados corretamente')
-            return 
+            return
         }
         kek = [
             {
@@ -168,14 +168,14 @@ function salvarPerguntas(){
                 isCorrectAnswer: false
             }
         ]
-        if(fp2 !== '' && fimg2 !== ''){
+        if (fp2 !== '' && fimg2 !== '') {
             kek.push({
                 text: `${fp2}`,
                 image: `${fimg2}`,
                 isCorrectAnswer: false
             })
         }
-        if(fp3 !== '' && fimg3 !== ''){
+        if (fp3 !== '' && fimg3 !== '') {
             kek.push({
                 text: `${fp3}`,
                 image: `${fimg3}`,
@@ -183,17 +183,17 @@ function salvarPerguntas(){
             })
         }
         ubjeito = {
-			title: `${tit}`,
-			color: `${cor3}`,
-			answers: kek
-		}
+            title: `${tit}`,
+            color: `${cor3}`,
+            answers: kek
+        }
         perguntas3.push(ubjeito)
     }
     tela3b.classList.add('hidden');
     tela3c.classList.remove('hidden');
 }
 let niveis3;
-function salvarNiveis(){
+function salvarNiveis() {
     niveis3 = [];
     let nivelAtual;
     let m1;
@@ -201,42 +201,42 @@ function salvarNiveis(){
     let m3;
     let m4;
     let listaDePorc = [];
-    for(let i=0; i<qtdN;i++){
+    for (let i = 0; i < qtdN; i++) {
         nivelAtual = document.querySelector(`.n${i}`);
         m1 = nivelAtual.querySelector('.m1').value
         m2 = Number(nivelAtual.querySelector('.m2').value)
         m3 = nivelAtual.querySelector('.m3').value
         m4 = nivelAtual.querySelector('.m4').value
-        
-        if(m1.length<10){
+
+        if (m1.length < 10) {
             alert('Preencha os dados corretamente')
             return
         }
-        if(m2>100 || m2<0){
+        if (m2 > 100 || m2 < 0) {
             alert('Preencha os dados corretamente')
             return
         }
-        if(m3.substring(0, 8) !== 'https://'){
+        if (m3.substring(0, 8) !== 'https://') {
             alert('Preencha os dados corretamente')
             return
         }
-        if(m4.length<30){
+        if (m4.length < 30) {
             alert('Preencha os dados corretamente')
             return
         }
         listaDePorc.push(m2);
-        
+
         ubjeito = {
-			title: m1,
-			image: m3,
-			text: m4,
-			minValue: m2
-		};
+            title: m1,
+            image: m3,
+            text: m4,
+            minValue: m2
+        };
         niveis3.push(ubjeito)
     }
-    if(!listaDePorc.includes(0)){
+    if (!listaDePorc.includes(0)) {
         alert('Preencha os dados corretamente')
-            return
+        return
     }
     quizzPronto = {
         title: titulo,
@@ -246,7 +246,7 @@ function salvarNiveis(){
     }
     mandarQuizz(quizzPronto);
 }
-function adicionarTelaFinal(x, y){
+function adicionarTelaFinal(x, y) {
     tela3d.innerHTML = `Seu quizz está pronto!
     <div class="divimgt3"><img
             src="${y}"
@@ -257,12 +257,12 @@ function adicionarTelaFinal(x, y){
     <button class="prosseguir2">Acessar Quizz</button>
     <button onclick='voltar()' class="home">Voltar pra home</button>`
 }
-function mandarQuizz(quiz){
+function mandarQuizz(quiz) {
     const promiseM = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quiz)
     promiseM.then(deuBom)
     promiseM.catch(deuRuim)
 }
-function deuBom(x){
+function deuBom(x) {
     idAtual = x.data.id
     idsCriados.push(x.data.id)
     tela3c.classList.add('hidden');
@@ -270,11 +270,11 @@ function deuBom(x){
     const listaDeIds = JSON.stringify(idsCriados);
     localStorage.setItem("ids", listaDeIds);
 }
-function deuRuim(){
+function deuRuim() {
     alert('Ocorreu algum erro, tente novamente mais tarde')
-            return
+    return
 }
-function voltar(){
+function voltar() {
     tela3d.classList.add('hidden')
 }
 
@@ -285,3 +285,75 @@ function voltar(){
 
 // pra acessar os ids de quizzes criados, usar a função "const nomeDaVariavel = localStorage.getItem("ids")"
 // que deve retornar um array com os ids dos quizzes do usuario
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+//script da tela 2
+
+function abrirQuizz(res) {
+    let id = res.id;
+    console.log(id);
+
+    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    requestListaQuizzes.then(printar);
+    function printar(promise) {
+        let listaQuizzes = promise.data;
+        console.log(listaQuizzes);
+        for (let i = 0; i < promise.data.length; i++) {
+            if (listaQuizzes[i].id == id) {
+                const tela01 = document.getElementById("tela01");
+                tela01.classList.toggle("hidden");
+                const tela02 = document.getElementById("tela2");
+                tela02.classList.toggle("hidden");
+                tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
+                <section class="fundoQuizz">
+                    <img src="${listaQuizzes[i].image} ">
+                </section>`;
+                for (let j = 0; j < listaQuizzes[i].questions.length;j++) {
+                    let zz = document.getElementById("critico-tela2");
+                    zz.innerHTML += `
+                <div class="centralizada">
+                    <div class="caixaDePerguntas" id = "${j}a">
+                        <div class="fundoPergunta" id = "${j}">
+
+                            <p>${listaQuizzes[i].questions[j].title}</p>
+                        </div>
+                    </div>
+                </div>`
+                    for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
+                        let zzz = document.getElementById(j + "a");
+                        let zzzz = document.getElementById(j);
+                        zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
+                        zzz.innerHTML += `<div class="alternativa">
+                        <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                        ${listaQuizzes[i].questions[j].answers[k].text}
+                    </div>`;
+
+                    }
+                    
+                }
+                console.log("é esse mesmo " + id);
+                console.log(listaQuizzes[i].title);
+            }
+        }
+        
+
+
+    }
+}
+
+
+
+// fim do script da tela 2
