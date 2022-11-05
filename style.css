@@ -607,7 +607,7 @@ h5{
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	
 }
 
@@ -617,7 +617,7 @@ h5{
 	height: 100%;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 
 .imagemQuizz{
@@ -661,4 +661,32 @@ h4{
 
 .hidden{
 	display: none;
+}
+
+@media (max-width: 1099px){
+
+
+	.containerCriar{
+		width: 340px;
+		height:181px;
+	}
+
+	.quizzUsuario{
+		width: 340px;
+	}
+
+	.todosUsuario{
+		display: flex;
+		justify-content: space-between;
+
+   }
+
+   .icone{
+	padding-right: 25px;
+   }
+
+   .quizzAPI{
+	width: 340px;
+   }
+
 }
