@@ -1,11 +1,12 @@
 //script da tela 3
-
+const listaStringzada = localStorage.getItem("ids");
 let titulo;
 let url;
 let qtdP;
 let qtdN;
 let quizzPronto;
-let idsCriados = [];
+let idsCriados = []
+idsCriados.push(JSON.parse(listaStringzada));
 let idAtual;
 const tela3a = document.getElementById('3a')
 const tela3b = document.getElementById('3b')
@@ -17,7 +18,7 @@ function pegarDados() {
     qtdP = document.querySelector('.qtdP').value
     qtdN = document.querySelector('.qtdN').value
     if (titulo.length > 19 && titulo.length < 66) {
-        if (url.substring(0, 8) === 'https://') {
+        if (url.substring(0, 4) === 'http') {
             if (qtdP > 2 && qtdN > 1) {
                 tela3a.classList.add('hidden');
                 tela3b.classList.remove('hidden');
@@ -144,15 +145,15 @@ function salvarPerguntas() {
             alert('Preencha os dados corretamente')
             return
         }
-        if (truimg.substring(0, 8) !== 'https://' || fimg.substring(0, 8) !== 'https://') {
+        if (truimg.substring(0, 4) !== 'http' || fimg.substring(0, 4) !== 'http') {
             alert('Preencha os dados corretamente')
             return
         }
-        if (fimg2 !== '' && fimg2.substring(0, 8) !== 'https://') {
+        if (fimg2 !== '' && fimg2.substring(0, 4) !== 'http') {
             alert('Preencha os dados corretamente')
             return
         }
-        if (fimg3 !== '' && fimg3.substring(0, 8) !== 'https://') {
+        if (fimg3 !== '' && fimg3.substring(0, 4) !== 'http') {
             alert('Preencha os dados corretamente')
             return
         }
@@ -216,7 +217,7 @@ function salvarNiveis() {
             alert('Preencha os dados corretamente')
             return
         }
-        if (m3.substring(0, 8) !== 'https://') {
+        if (m3.substring(0, 4) !== 'http') {
             alert('Preencha os dados corretamente')
             return
         }
