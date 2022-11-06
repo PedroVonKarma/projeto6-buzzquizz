@@ -5,8 +5,7 @@ let url;
 let qtdP;
 let qtdN;
 let quizzPronto;
-let idsCriados = []
-idsCriados.push(JSON.parse(listaStringzada));
+let idsCriados = (JSON.parse(listaStringzada));
 let idAtual;
 const tela3a = document.getElementById('3a')
 const tela3b = document.getElementById('3b')
@@ -265,10 +264,10 @@ function mandarQuizz(quiz) {
 }
 function deuBom(x) {
     idAtual = x.data.id
-    idsCriados.push(x.data.id)
+    idsCriados.push(idAtual)
     tela3c.classList.add('hidden');
     tela3d.classList.remove('hidden');
-    const listaDeIds = JSON.stringify(idsCriados);
+    let listaDeIds = JSON.stringify(idsCriados);
     localStorage.setItem("ids", listaDeIds);
 }
 function deuRuim() {
@@ -284,54 +283,63 @@ function seguirQuizz() {
     tela3d.classList.add('hidden')
     mother.classList.add('hidden')
     let id = idAtual;
-
-    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
-    requestListaQuizzes.then(printar);
-    function printar(promise) {
-        let listaQuizzes = promise.data;
-        console.log(listaQuizzes);
-        for (let i = 0; i < promise.data.length; i++) {
-            if (listaQuizzes[i].id == id) {
-                const tela01 = document.getElementById("tela01");
-                tela01.classList.toggle("hidden");
-                const tela02 = document.getElementById("tela2");
-                tela02.classList.toggle("hidden");
-                tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
-                <section class="fundoQuizz">
-                    <img src="${listaQuizzes[i].image} ">
-                </section>`;
-                for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
-                    let zz = document.getElementById("critico-tela2");
-                    zz.innerHTML += `
-                <div class="centralizada">
-                    <div class="caixaDePerguntas" id = "${j}a">
-                        <div class="fundoPergunta" id = "${j}">
-
-                            <p>${listaQuizzes[i].questions[j].title}</p>
+    
+        let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+        requestListaQuizzes.then(printar);
+        function printar(promise) {
+            listaQuizzes = promise.data;
+            console.log(listaQuizzes);
+            for (let i = 0; i < promise.data.length; i++) {
+                if (listaQuizzes[i].id == id) {
+                    tela01.classList.toggle("hidden");
+                    tela02.classList.toggle("hidden");
+                    tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
+                    <section class="fundoQuizz">
+                        <img src="${listaQuizzes[i].image} ">
+                    </section>`;
+                    for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
+                        let zz = document.getElementById("critico-tela2");
+                        zz.innerHTML += `
+                    <div class="centralizada">
+                        <div class="caixaDePerguntas" id = "${j}a">
+                            <div class="fundoPergunta" id = "${j}">
+    
+                                <p>${listaQuizzes[i].questions[j].title}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>`
-                    for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
-                        let zzz = document.getElementById(j + "a");
-                        let zzzz = document.getElementById(j);
-                        zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
-                        zzz.innerHTML += `<div class="alternativa">
-                        <img src="${listaQuizzes[i].questions[j].answers[k].image}">
-                        ${listaQuizzes[i].questions[j].answers[k].text}
-                    </div>`;
-
+                    </div>`
+                        shuffleArray(listaQuizzes[i].questions[j].answers);
+                        for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
+                            let zzz = document.getElementById(j + "a");
+                            let zzzz = document.getElementById(j);
+                            zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
+                            if (listaQuizzes[i].questions[j].answers[k].isCorrectAnswer == true) {
+                                zzz.innerHTML += `<div class="alternativa correta" onclick = "checarAlternativa(this)" id = "${k}b">
+                            <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                            ${listaQuizzes[i].questions[j].answers[k].text}
+                        </div>`;
+                            }
+                            else {
+                                zzz.innerHTML += `<div class="alternativa incorreta" onclick = "checarAlternativa(this)" id = "${k}b">
+                                <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                                ${listaQuizzes[i].questions[j].answers[k].text}
+                            </div>`;
+    
+                            }
+    
+                        }
+    
                     }
-
+                    console.log("é esse mesmo " + id);
+                    console.log(listaQuizzes[i].title);
                 }
-                console.log("é esse mesmo " + id);
-                console.log(listaQuizzes[i].title);
+    
             }
         }
-
-
-
+        let fundoTela02 = document.getElementById("critico-tela2");
+        fundoTela02.children[1].scrollIntoView();
     }
-}
+
 
 
 
