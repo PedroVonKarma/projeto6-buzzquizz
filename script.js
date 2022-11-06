@@ -254,7 +254,7 @@ function adicionarTelaFinal(x, y) {
         <div class="gradient"></div>
         <p class="tt3">${x}</p>
     </div>
-    <button class="prosseguir2">Acessar Quizz</button>
+    <button onclick='seguirQuizz()' class="prosseguir2">Acessar Quizz</button>
     <button onclick='voltar()' class="home">Voltar pra home</button>`
 }
 function mandarQuizz(quiz) {
@@ -276,6 +276,60 @@ function deuRuim() {
 }
 function voltar() {
     tela3d.classList.add('hidden')
+    mother.classList.remove('hidden')
+}
+
+function seguirQuizz() {
+    tela3d.classList.add('hidden')
+    mother.classList.add('hidden')
+    let id = idAtual;
+
+    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    requestListaQuizzes.then(printar);
+    function printar(promise) {
+        let listaQuizzes = promise.data;
+        console.log(listaQuizzes);
+        for (let i = 0; i < promise.data.length; i++) {
+            if (listaQuizzes[i].id == id) {
+                const tela01 = document.getElementById("tela01");
+                tela01.classList.toggle("hidden");
+                const tela02 = document.getElementById("tela2");
+                tela02.classList.toggle("hidden");
+                tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
+                <section class="fundoQuizz">
+                    <img src="${listaQuizzes[i].image} ">
+                </section>`;
+                for (let j = 0; j < listaQuizzes[i].questions.length;j++) {
+                    let zz = document.getElementById("critico-tela2");
+                    zz.innerHTML += `
+                <div class="centralizada">
+                    <div class="caixaDePerguntas" id = "${j}a">
+                        <div class="fundoPergunta" id = "${j}">
+
+                            <p>${listaQuizzes[i].questions[j].title}</p>
+                        </div>
+                    </div>
+                </div>`
+                    for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
+                        let zzz = document.getElementById(j + "a");
+                        let zzzz = document.getElementById(j);
+                        zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
+                        zzz.innerHTML += `<div class="alternativa">
+                        <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                        ${listaQuizzes[i].questions[j].answers[k].text}
+                    </div>`;
+
+                    }
+                    
+                }
+                console.log("é esse mesmo " + id);
+                console.log(listaQuizzes[i].title);
+            }
+        }
+        
+
+
+    }
 }
 
 
@@ -357,3 +411,7 @@ function abrirQuizz(res) {
 
 
 // fim do script da tela 2
+
+const mother = document.querySelector('.motherbox'); //<--- essa constante pode ser util para os 3, já ta criada
+
+

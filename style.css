@@ -500,20 +500,17 @@ header {
 	width: 100%;
 }
 @media (max-width:1099px) {
-	.caixaA, .caixaDePerguntas, .caixaN, .caixaFechada, .divimgt3{
+	.caixaA, .caixaPergunta, .caixaN, .caixaFechada, .divimgt3{
 		width: 100%;
 	}
 	.divimgt3{
 		padding-inline: 18px;
+		justify-content: center;
 	}
 }
 
 /*----------------------------------FIM DO STYLE DA TELA 3---------------------------------------*/
 
-
-.hidden {
-	display: none;
-}
 
 
 /*----------------------------------STYLE DA TELA 1---------------------------------------*/
@@ -702,4 +699,7 @@ h4{
 	width: 340px;
    }
 
+}
+.hidden {
+	display: none;
 }
