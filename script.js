@@ -299,7 +299,7 @@ function seguirQuizz() {
                 <section class="fundoQuizz">
                     <img src="${listaQuizzes[i].image} ">
                 </section>`;
-                for (let j = 0; j < listaQuizzes[i].questions.length;j++) {
+                for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
                     let zz = document.getElementById("critico-tela2");
                     zz.innerHTML += `
                 <div class="centralizada">
@@ -320,13 +320,13 @@ function seguirQuizz() {
                     </div>`;
 
                     }
-                    
+
                 }
                 console.log("é esse mesmo " + id);
                 console.log(listaQuizzes[i].title);
             }
         }
-        
+
 
 
     }
@@ -355,9 +355,107 @@ function seguirQuizz() {
 
 
 //script da tela 2
+// Função para randomizar array
+function shuffleArray(arr) {
+    // Loop em todos os elementos
+    for (let i = arr.length - 1; i > 0; i--) {
+        // Escolhendo elemento aleatório
+        const j = Math.floor(Math.random() * (i + 1));
+        // Reposicionando elemento
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    // Retornando array com aleatoriedade
+    return arr;
+}
+let contador = 0;
+let corretas = 0;
+let y = 720;
+let id;
+
+function checarAlternativa(alternativa) {
+    let check = alternativa.classList;
+    let pai = alternativa.parentElement;
+    let cc = pai.children;
+    contador++;
+    let stop = cc.length - 2;
+    if (check.contains("correta")) {
+        corretas++
+    }
+    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    requestListaQuizzes.then(exec);
+    function exec(promise) {
+        let listaQuizzes = promise.data;
+        for (let i = 0; i < promise.data.length; i++) {
+            if (listaQuizzes[i].id == id) {
+                setTimeout(() => {
+                    window.scrollTo(0, y);
+                    y += 720;
+                }, 2000);
+                setTimeout(() => {
+                    if (contador == stop) {
+                        console.log("agr é pra printar");
+                        console.log(listaQuizzes[i]);
+                        console.log((corretas / contador) * 100);
+                        for (let j = listaQuizzes[i].levels.length - 1; j >=0 ; j--) {
+                            if ((corretas / contador) * 100 >= listaQuizzes[i].levels[j].minValue) {
+                                console.log(listaQuizzes[i].levels[j]);
+                                alternativa.parentElement.parentElement.parentElement.innerHTML += `<div class="centralizada">
+                        <div class="caixaDePerguntas" id "parabenizacao">
+                            <div class="fundoPergunta" id = "tituloParabenizacao">
+                                ${listaQuizzes[i].levels[j].title}
+                            </div>
+                            <div class="imagemDesempenho">
+                                <img src="${listaQuizzes[i].levels[j].image}">
+                            </div>
+                            <div class="textoDesempenho">
+                                <p>${listaQuizzes[i].levels[j].text}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "centralizada">
+                    <div class="reiniciarQuizz">Reiniciar quizz</div>
+                    </div>
+                    <div class = "centralizada">
+                    <div class="voltarHome">Voltar pra home</div>
+                    </div>`
+                            }
+                            else { console.log("comparacao deu ruim"); }
+                        }
+
+                    };
+                }, 1000);
+            }
+        }
+
+    }
+
+    for (let i = 1; i < 6; i++) {
+
+        let seila = cc[i].classList.value
+
+        if (seila == "alternativa correta") {
+            cc[i].style.color = "green";
+            cc[i].setAttribute('onclick', '');
+
+        }
+
+        if (seila == "alternativa incorreta") {
+            cc[i].style.color = "red";
+            cc[i].setAttribute('onclick', '');
+        }
+
+        if (cc[i].id != alternativa.id) {
+            cc[i].style.opacity = 0.3;
+        }
+
+
+    }
+
+}
+
 
 function abrirQuizz(res) {
-    let id = res.id;
+    id = res.id;
     console.log(id);
 
     let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -367,6 +465,7 @@ function abrirQuizz(res) {
         console.log(listaQuizzes);
         for (let i = 0; i < promise.data.length; i++) {
             if (listaQuizzes[i].id == id) {
+                let ab = listaQuizzes[i].id
                 const tela01 = document.getElementById("tela01");
                 tela01.classList.toggle("hidden");
                 const tela02 = document.getElementById("tela2");
@@ -375,7 +474,7 @@ function abrirQuizz(res) {
                 <section class="fundoQuizz">
                     <img src="${listaQuizzes[i].image} ">
                 </section>`;
-                for (let j = 0; j < listaQuizzes[i].questions.length;j++) {
+                for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
                     let zz = document.getElementById("critico-tela2");
                     zz.innerHTML += `
                 <div class="centralizada">
@@ -386,27 +485,36 @@ function abrirQuizz(res) {
                         </div>
                     </div>
                 </div>`
+                    shuffleArray(listaQuizzes[i].questions[j].answers);
                     for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
                         let zzz = document.getElementById(j + "a");
                         let zzzz = document.getElementById(j);
                         zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
-                        zzz.innerHTML += `<div class="alternativa">
+                        if (listaQuizzes[i].questions[j].answers[k].isCorrectAnswer == true) {
+                            zzz.innerHTML += `<div class="alternativa correta" onclick = "checarAlternativa(this)" id = "${k}b">
                         <img src="${listaQuizzes[i].questions[j].answers[k].image}">
                         ${listaQuizzes[i].questions[j].answers[k].text}
                     </div>`;
+                        }
+                        else {
+                            zzz.innerHTML += `<div class="alternativa incorreta" onclick = "checarAlternativa(this)" id = "${k}b">
+                            <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                            ${listaQuizzes[i].questions[j].answers[k].text}
+                        </div>`;
+
+                        }
 
                     }
-                    
+
                 }
                 console.log("é esse mesmo " + id);
                 console.log(listaQuizzes[i].title);
             }
+
         }
-        
-
-
     }
 }
+
 
 
 
