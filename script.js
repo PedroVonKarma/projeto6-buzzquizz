@@ -5,8 +5,7 @@ let url;
 let qtdP;
 let qtdN;
 let quizzPronto;
-let idsCriados = []
-idsCriados.push(JSON.parse(listaStringzada));
+let idsCriados = (JSON.parse(listaStringzada));
 let idAtual;
 const tela3a = document.getElementById('3a')
 const tela3b = document.getElementById('3b')
@@ -265,10 +264,11 @@ function mandarQuizz(quiz) {
 }
 function deuBom(x) {
     idAtual = x.data.id
-    idsCriados.push(x.data.id)
+    idsCriados.push(idAtual)
     tela3c.classList.add('hidden');
     tela3d.classList.remove('hidden');
-    const listaDeIds = JSON.stringify(idsCriados);
+    let listaDeIds = JSON.stringify(idsCriados);
+    localStorage.removeItem("ids");
     localStorage.setItem("ids", listaDeIds);
 }
 function deuRuim() {
@@ -284,54 +284,63 @@ function seguirQuizz() {
     tela3d.classList.add('hidden')
     mother.classList.add('hidden')
     let id = idAtual;
-
-    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
-    requestListaQuizzes.then(printar);
-    function printar(promise) {
-        let listaQuizzes = promise.data;
-        console.log(listaQuizzes);
-        for (let i = 0; i < promise.data.length; i++) {
-            if (listaQuizzes[i].id == id) {
-                const tela01 = document.getElementById("tela01");
-                tela01.classList.toggle("hidden");
-                const tela02 = document.getElementById("tela2");
-                tela02.classList.toggle("hidden");
-                tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
-                <section class="fundoQuizz">
-                    <img src="${listaQuizzes[i].image} ">
-                </section>`;
-                for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
-                    let zz = document.getElementById("critico-tela2");
-                    zz.innerHTML += `
-                <div class="centralizada">
-                    <div class="caixaDePerguntas" id = "${j}a">
-                        <div class="fundoPergunta" id = "${j}">
-
-                            <p>${listaQuizzes[i].questions[j].title}</p>
+    
+        let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+        requestListaQuizzes.then(printar);
+        function printar(promise) {
+            listaQuizzes = promise.data;
+            console.log(listaQuizzes);
+            for (let i = 0; i < promise.data.length; i++) {
+                if (listaQuizzes[i].id == id) {
+                    tela01.classList.toggle("hidden");
+                    tela02.classList.toggle("hidden");
+                    tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
+                    <section class="fundoQuizz">
+                        <img src="${listaQuizzes[i].image} ">
+                    </section>`;
+                    for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
+                        let zz = document.getElementById("critico-tela2");
+                        zz.innerHTML += `
+                    <div class="centralizada">
+                        <div class="caixaDePerguntas" id = "${j}a">
+                            <div class="fundoPergunta" id = "${j}">
+    
+                                <p>${listaQuizzes[i].questions[j].title}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>`
-                    for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
-                        let zzz = document.getElementById(j + "a");
-                        let zzzz = document.getElementById(j);
-                        zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
-                        zzz.innerHTML += `<div class="alternativa">
-                        <img src="${listaQuizzes[i].questions[j].answers[k].image}">
-                        ${listaQuizzes[i].questions[j].answers[k].text}
-                    </div>`;
-
+                    </div>`
+                        shuffleArray(listaQuizzes[i].questions[j].answers);
+                        for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
+                            let zzz = document.getElementById(j + "a");
+                            let zzzz = document.getElementById(j);
+                            zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
+                            if (listaQuizzes[i].questions[j].answers[k].isCorrectAnswer == true) {
+                                zzz.innerHTML += `<div class="alternativa correta" onclick = "checarAlternativa(this)" id = "${k}b">
+                            <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                            ${listaQuizzes[i].questions[j].answers[k].text}
+                        </div>`;
+                            }
+                            else {
+                                zzz.innerHTML += `<div class="alternativa incorreta" onclick = "checarAlternativa(this)" id = "${k}b">
+                                <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                                ${listaQuizzes[i].questions[j].answers[k].text}
+                            </div>`;
+    
+                            }
+    
+                        }
+    
                     }
-
+                    console.log("é esse mesmo " + id);
+                    console.log(listaQuizzes[i].title);
                 }
-                console.log("é esse mesmo " + id);
-                console.log(listaQuizzes[i].title);
+    
             }
         }
-
-
-
+        let fundoTela02 = document.getElementById("critico-tela2");
+        fundoTela02.children[1].scrollIntoView();
     }
-}
+
 
 
 
@@ -372,35 +381,73 @@ let contador = 0;
 let corretas = 0;
 let y = 720;
 let id;
+const tela01 = document.getElementById("tela01");
+const tela02 = document.getElementById("tela2");
+let listaQuizzes = [];
+
+
+function reiniciarQuizz() {
+    window.scrollTo(0,0);
+    contador = 0;
+    corretas = 0;
+    y = 720;
+    id;
+    let fundoTela02 = document.getElementById("critico-tela2");
+    let filhos = fundoTela02.children;
+    fundoTela02.removeChild(fundoTela02.lastChild);
+    fundoTela02.removeChild(fundoTela02.lastChild);
+    fundoTela02.removeChild(fundoTela02.lastChild);
+    fundoTela02.removeChild(fundoTela02.lastChild);
+    fundoTela02.removeChild(fundoTela02.lastChild);
+    console.log(filhos);
+    for (let i = 0; i < filhos.length; i++) {
+        let netos = filhos[i].children[0].children;
+        console.log(netos);
+        for (let j = 1; j < netos.length; j++) {
+            netos[j].style.color = "black";
+            netos[j].style.opacity = 1;
+            netos[j].setAttribute('onclick', 'checarAlternativa(this)');
+        }
+    }
+    window
+}
+function voltarHome() {
+    window.scrollTo(0,0);
+    let fundoTela02 = document.getElementById("critico-tela2");
+    console.log('botao dibas');
+    fundoTela02.innerHTML = "";
+    tela01.classList.toggle("hidden");
+    tela02.classList.toggle('hidden');
+    contador = 0;
+    corretas = 0;
+    y = 720;
+    id = 0;
+}
 
 function checarAlternativa(alternativa) {
     let check = alternativa.classList;
     let pai = alternativa.parentElement;
     let cc = pai.children;
     contador++;
-    let stop = cc.length - 2;
+    let stop = cc.length;
     if (check.contains("correta")) {
         corretas++
     }
-    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
-    requestListaQuizzes.then(exec);
-    function exec(promise) {
-        let listaQuizzes = promise.data;
-        for (let i = 0; i < promise.data.length; i++) {
-            if (listaQuizzes[i].id == id) {
-                setTimeout(() => {
-                    window.scrollTo(0, y);
-                    y += 720;
-                }, 2000);
-                setTimeout(() => {
-                    if (contador == stop) {
-                        console.log("agr é pra printar");
-                        console.log(listaQuizzes[i]);
-                        console.log((corretas / contador) * 100);
-                        for (let j = listaQuizzes[i].levels.length - 1; j >=0 ; j--) {
-                            if ((corretas / contador) * 100 >= listaQuizzes[i].levels[j].minValue) {
-                                console.log(listaQuizzes[i].levels[j]);
-                                alternativa.parentElement.parentElement.parentElement.innerHTML += `<div class="centralizada">
+    for (let i = 0; i < listaQuizzes.length; i++) {
+        if (listaQuizzes[i].id == id) {
+            setTimeout(() => {
+                window.scrollTo(0, y);
+                y += 700;
+            }, 2000);
+            setTimeout(() => {
+                if (contador == stop) {
+                    console.log("agr é pra printar");
+                    console.log(listaQuizzes[i]);
+                    console.log((corretas / contador) * 100);
+                    for (let j = listaQuizzes[i].levels.length - 1; j >= 0; j--) {
+                        if ((corretas / contador) * 100 >= listaQuizzes[i].levels[j].minValue) {
+                            console.log(listaQuizzes[i].levels[j]);
+                            alternativa.parentElement.parentElement.parentElement.innerHTML += `<div class="centralizada">
                         <div class="caixaDePerguntas" id "parabenizacao">
                             <div class="fundoPergunta" id = "tituloParabenizacao">
                                 ${listaQuizzes[i].levels[j].title}
@@ -414,23 +461,23 @@ function checarAlternativa(alternativa) {
                         </div>
                     </div>
                     <div class = "centralizada">
-                    <div class="reiniciarQuizz">Reiniciar quizz</div>
+                    <div class="reiniciarQuizz" onclick = "reiniciarQuizz(this)" >Reiniciar quizz</div>
                     </div>
                     <div class = "centralizada">
-                    <div class="voltarHome">Voltar pra home</div>
+                    <div class="voltarHome" onclick = "voltarHome(this)">Voltar pra home</div>
                     </div>`
-                            }
-                            else { console.log("comparacao deu ruim"); }
                         }
+                        else { console.log("comparacao deu ruim"); }
+                    }
 
-                    };
-                }, 1000);
-            }
+                };
+            }, 1000);
         }
-
     }
 
-    for (let i = 1; i < 6; i++) {
+
+
+    for (let i = 1; i < cc.length; i++) {
 
         let seila = cc[i].classList.value
 
@@ -455,21 +502,20 @@ function checarAlternativa(alternativa) {
 }
 
 
+
 function abrirQuizz(res) {
+    window.scrollTo(0, 0);
     id = res.id;
     console.log(id);
 
     let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
     requestListaQuizzes.then(printar);
     function printar(promise) {
-        let listaQuizzes = promise.data;
+        listaQuizzes = promise.data;
         console.log(listaQuizzes);
         for (let i = 0; i < promise.data.length; i++) {
             if (listaQuizzes[i].id == id) {
-                let ab = listaQuizzes[i].id
-                const tela01 = document.getElementById("tela01");
                 tela01.classList.toggle("hidden");
-                const tela02 = document.getElementById("tela2");
                 tela02.classList.toggle("hidden");
                 tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
                 <section class="fundoQuizz">
@@ -514,6 +560,8 @@ function abrirQuizz(res) {
 
         }
     }
+    let fundoTela02 = document.getElementById("critico-tela2");
+    fundoTela02.children[1].scrollIntoView();
 }
 
 
