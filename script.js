@@ -415,3 +415,60 @@ function abrirQuizz(res) {
 const mother = document.querySelector('.motherbox'); //<--- essa constante pode ser util para os 3, já ta criada
 
 
+// tela 1 script --------------------------------------------------------------------------------------------
+
+let listaQuizzesTela01 = [];
+
+function adicionarQuizz(){
+
+    /* ao clicar em "criar quizz" ou no ícone de "+", troca a tela 1 pela tela 3*/
+
+    const tela01 = document.getElementById("tela01");
+    tela01.classList.toggle('hidden');
+    const tela03 = document.getElementById('3a');
+    tela03.classList.toggle('hidden');
+
+}
+
+
+function buscarQuizzes(){
+
+const promiseBuscar = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+promiseBuscar.then(sucessoBuscar);
+promiseBuscar.catch(erroServidor);
+}
+
+function sucessoBuscar(quizzesServidor){
+    listaQuizzesTela01 = quizzesServidor.data;
+    renderizarQuizzes();
+}
+
+
+function erroServidor(respostaErro){
+    alert('Tente novamente mais tarde');
+}
+
+buscarQuizzes();
+
+
+function renderizarQuizzes(){
+
+    let imagemComTitulo = document.querySelector(".containerAPI");
+    
+
+    for (let i = 0; i < listaQuizzesTela01.length; i++){
+        let imagemComTituloDaVez = listaQuizzesTela01[i];
+        imagemComTitulo.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz">
+        <img class="imagemQuizz"
+            src="${imagemComTituloDaVez.image}">
+            
+        <h4>${imagemComTituloDaVez.title}</h4>
+            
+        <div class="gradientTela1"></div>
+    </div>`
+
+    }
+}
+
+
+

@@ -638,7 +638,10 @@ h5{
 
 .inicioQuizz{
 	position: relative;
+	overflow: hidden;
 }
+
+
 
 h4{
 	font-size: 19px;
