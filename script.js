@@ -268,6 +268,7 @@ function deuBom(x) {
     tela3c.classList.add('hidden');
     tela3d.classList.remove('hidden');
     let listaDeIds = JSON.stringify(idsCriados);
+    localStorage.removeItem("ids");
     localStorage.setItem("ids", listaDeIds);
 }
 function deuRuim() {
