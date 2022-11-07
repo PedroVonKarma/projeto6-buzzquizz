@@ -458,7 +458,7 @@ function checarAlternativa(alternativa) {
     contador++;
     let stop = cc.length;
     if (check.contains("correta")) {
-        corretas++
+        corretas++;
     }
     for (let i = 0; i < listaQuizzes.length; i++) {
         if (listaQuizzes[i].id == id) {
@@ -474,7 +474,7 @@ function checarAlternativa(alternativa) {
                             alternativa.parentElement.parentElement.parentElement.innerHTML += `<div class="centralizada">
                         <div class="caixaDePerguntas" id "parabenizacao">
                             <div class="fundoPergunta" id = "tituloParabenizacao">
-                                ${listaQuizzes[i].levels[j].title}
+                                ${Math.ceil((corretas/contador)*100)}% de acerto: ${listaQuizzes[i].levels[j].title}
                             </div>
                             <div class="imagemDesempenho">
                                 <img src="${listaQuizzes[i].levels[j].image}">
