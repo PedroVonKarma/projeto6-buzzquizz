@@ -290,6 +290,7 @@ function deuBom(x) {
     localStorage.setItem("ids", listaDeIds);
     } else{
         idAtual = x.data.id
+        adicionarTelaFinal(titulo, url);
     idsCriados.push(idAtual)
     tela3c.classList.add('hidden');
     tela3d.classList.remove('hidden');
@@ -322,8 +323,6 @@ function seguirQuizz(res) {
         listaQuizzes = promise.data;
         for (let i = 0; i < promise.data.length; i++) {
             if (listaQuizzes[i].id == id) {
-                tela01.classList.toggle("hidden");
-                tela02.classList.toggle("hidden");
                 tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
                 <section class="fundoQuizz">
                     <img src="${listaQuizzes[i].image} ">
