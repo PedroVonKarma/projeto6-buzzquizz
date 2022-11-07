@@ -780,3 +780,12 @@ h4 {
 .hidden {
 	display: none;
 }
+.alternativa:hover{
+	cursor: pointer;
+}
+.voltarHome:hover{
+	cursor: pointer;
+}
+.reiniciarQuizz:hover{
+	cursor: pointer;
+}

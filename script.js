@@ -37,7 +37,6 @@ function pegarDados() {
                 tela3b.classList.remove('hidden');
                 adicionarXPerguntas(qtdP);
                 adicionarXNiveis(qtdN);
-                adicionarTelaFinal(titulo, url);
             } else {
                 alert('Preencha os dados corretamente')
             }
@@ -268,7 +267,7 @@ function adicionarTelaFinal(x, y) {
         <div class="gradient"></div>
         <p class="tt3">${x}</p>
     </div>
-    <button onclick='seguirQuizz()' class="prosseguir2">Acessar Quizz</button>
+    <button onclick='seguirQuizz(this)' id='${idAtual}' class="prosseguir2">Acessar Quizz</button>
     <button onclick='voltar()' class="home">Voltar pra home</button>`
 }
 function mandarQuizz(quiz) {
@@ -277,11 +276,12 @@ function mandarQuizz(quiz) {
     promiseM.catch(deuRuim)
 }
 function deuBom(x) {
-
+    
     if(idsCriados == null){
         idsCriados = [] 
         idsCriados.push( JSON.parse(listaStringzada) )
     idAtual = x.data.id
+    adicionarTelaFinal(titulo, url);
     idsCriados.push(idAtual)
     tela3c.classList.add('hidden');
     tela3d.classList.remove('hidden');
