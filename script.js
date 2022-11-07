@@ -5,7 +5,21 @@ let url;
 let qtdP;
 let qtdN;
 let quizzPronto;
-let idsCriados = (JSON.parse(listaStringzada));
+
+
+
+/* let idsCriados = [] 
+   idsCriados.push( JSON.parse(listaStringzada) )
+
+armazena arrays dentro de arrays, impossibilitando a filtragem (ou ao menos tornando-a difícil de implementar)
+
+*/
+
+let idsCriados = JSON.parse(listaStringzada)   /* em uma primeira iteração, não funciona (pois idsCriados
+                                               está como null). Porém, utilizando o formato comentado acima
+                                               para contornar o problema da primeira vez, esta forma armazena os ids 
+                                               corretamente, devolvendo: [null, id1, id2, id3, id4.....] */
+
 let idAtual;
 const tela3a = document.getElementById('3a')
 const tela3b = document.getElementById('3b')
@@ -276,8 +290,14 @@ function deuRuim() {
     return
 }
 function voltar() {
-    tela3d.classList.add('hidden')
-    mother.classList.remove('hidden')
+    
+    tela3d.classList.add('hidden');
+    mother.classList.remove('hidden');
+
+    const painelCriar = document.querySelector(".containerCriar");
+    painelCriar.classList.add("hidden");
+    const painelUsuario = document.querySelector(".quizzUsuario");
+    painelUsuario.classList.remove("hidden");
 }
 
 function seguirQuizz() {
@@ -576,6 +596,7 @@ const mother = document.querySelector('.motherbox'); //<--- essa constante pode 
 
 let listaQuizzesTela01 = [];
 
+
 function adicionarQuizz(){
 
     /* ao clicar em "criar quizz" ou no ícone de "+", troca a tela 1 pela tela 3*/
@@ -584,6 +605,11 @@ function adicionarQuizz(){
     tela01.classList.toggle('hidden');
     const tela03 = document.getElementById('3a');
     tela03.classList.toggle('hidden');
+
+    const painelCriar = document.querySelector(".containerCriar");
+    painelCriar.classList.add("hidden");
+    const painelUsuario = document.querySelector(".quizzUsuario");
+    painelUsuario.classList.remove("hidden");
 
 }
 
@@ -608,10 +634,43 @@ function erroServidor(respostaErro){
 buscarQuizzes();
 
 
+function buscarQuizzesUsuario(){           /* MEXER NO FOR AQUI!!!!!!!!!!!!!!!!!!!!!!!! */
+    
+    for (let i = 1; i < idsCriados.length; i++){
+        const promiseBuscarUsuario = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/"+idsCriados[i]);
+        promiseBuscarUsuario.then(sucessoBuscarUsuario)
+
+    }
+}
+
+function sucessoBuscarUsuario(quizzesServidorUsuario){
+    let imagemComTituloUsuario = document.querySelector(".containerUsuario");
+    let imagemComTituloDaVez = quizzesServidorUsuario.data;
+
+    imagemComTituloUsuario.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz">
+    <img class="imagemQuizz"
+        src="${imagemComTituloDaVez.image}">
+    <h4>${imagemComTituloDaVez.title}</h4>
+    <div class="gradientTela1"></div>
+</div>`
+}
+
+buscarQuizzesUsuario()
+
+
+
+
+
+
+
+
+
 function renderizarQuizzes(){
 
     let imagemComTitulo = document.querySelector(".containerAPI");
     let imagemComTituloUsuario = document.querySelector(".containerUsuario");
+
+
 
     
 
@@ -620,6 +679,7 @@ function renderizarQuizzes(){
 
 
     for (let i = 0; i < listaQuizzesTela01.length; i++){
+        let imagemComTitulo = document.querySelector(".containerAPI");
         let imagemComTituloDaVez = listaQuizzesTela01[i];
         imagemComTitulo.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz">
         <img class="imagemQuizz"
@@ -634,4 +694,15 @@ function renderizarQuizzes(){
 }
 
 
+function esconderPainelPontilhado(){
+    
+    if (idsCriados.length > 1){
+        const painelCriar = document.querySelector(".containerCriar");
+    painelCriar.classList.add("hidden");
+    const painelUsuario = document.querySelector(".quizzUsuario");
+    painelUsuario.classList.remove("hidden");
+    }
+}
+
+esconderPainelPontilhado();
 
