@@ -309,9 +309,9 @@ function voltar() {
     window.location.reload();
 }
 
-function seguirQuizz() {
-    tela3d.classList.toggle('hidden')
-    tela02.classList.toggle('hidden')
+function seguirQuizz(res) {
+    tela3d.classList.toggle('hidden');
+    tela02.classList.toggle('hidden');
     window.scrollTo(0, 0);
     id = res.id;
     console.log(id);
@@ -649,7 +649,7 @@ function sucessoBuscarUsuario(quizzesServidorUsuario){
     let imagemComTituloUsuario = document.querySelector(".containerUsuario");
     let imagemComTituloDaVez = quizzesServidorUsuario.data;
 
-    imagemComTituloUsuario.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz">
+    imagemComTituloUsuario.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz" id = "${listaQuizzesTela01[i].id}">
     <img class="imagemQuizz"
         src="${imagemComTituloDaVez.image}">
     <h4>${imagemComTituloDaVez.title}</h4>
