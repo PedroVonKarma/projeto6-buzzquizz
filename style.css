@@ -201,7 +201,7 @@ header {
 	position: fixed;
 	top: 69px;
 	z-index: 2;
-	;
+	object-fit: cover;
 }
 
 
