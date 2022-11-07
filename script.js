@@ -277,6 +277,10 @@ function mandarQuizz(quiz) {
     promiseM.catch(deuRuim)
 }
 function deuBom(x) {
+
+    if(idsCriados == null){
+        idsCriados = [] 
+        idsCriados.push( JSON.parse(listaStringzada) )
     idAtual = x.data.id
     idsCriados.push(idAtual)
     tela3c.classList.add('hidden');
@@ -284,6 +288,15 @@ function deuBom(x) {
     let listaDeIds = JSON.stringify(idsCriados);
     localStorage.removeItem("ids");
     localStorage.setItem("ids", listaDeIds);
+    } else{
+        idAtual = x.data.id
+    idsCriados.push(idAtual)
+    tela3c.classList.add('hidden');
+    tela3d.classList.remove('hidden');
+    let listaDeIds = JSON.stringify(idsCriados);
+    localStorage.removeItem("ids");
+    localStorage.setItem("ids", listaDeIds);
+    }
 }
 function deuRuim() {
     alert('Ocorreu algum erro, tente novamente mais tarde')
@@ -700,5 +713,5 @@ function esconderPainelPontilhado(){
     }
 }
 
-esconderPainelPontilhado();
+esconderPainelPontilhado(); 
 
