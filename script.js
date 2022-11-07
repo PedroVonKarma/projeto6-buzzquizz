@@ -293,11 +293,7 @@ function voltar() {
     
     tela3d.classList.add('hidden');
     mother.classList.remove('hidden');
-
-    const painelCriar = document.querySelector(".containerCriar");
-    painelCriar.classList.add("hidden");
-    const painelUsuario = document.querySelector(".quizzUsuario");
-    painelUsuario.classList.remove("hidden");
+    window.location.reload();
 }
 
 function seguirQuizz() {
