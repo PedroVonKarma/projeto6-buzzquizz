@@ -310,65 +310,65 @@ function voltar() {
 }
 
 function seguirQuizz() {
-    tela3d.classList.add('hidden')
-    mother.classList.add('hidden')
-    let id = idAtual;
-    
-        let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
-        requestListaQuizzes.then(printar);
-        function printar(promise) {
-            listaQuizzes = promise.data;
-            console.log(listaQuizzes);
-            for (let i = 0; i < promise.data.length; i++) {
-                if (listaQuizzes[i].id == id) {
-                    tela01.classList.toggle("hidden");
-                    tela02.classList.toggle("hidden");
-                    tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
-                    <section class="fundoQuizz">
-                        <img src="${listaQuizzes[i].image} ">
-                    </section>`;
-                    for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
-                        let zz = document.getElementById("critico-tela2");
-                        zz.innerHTML += `
-                    <div class="centralizada">
-                        <div class="caixaDePerguntas" id = "${j}a">
-                            <div class="fundoPergunta" id = "${j}">
-    
-                                <p>${listaQuizzes[i].questions[j].title}</p>
-                            </div>
+    tela3d.classList.toggle('hidden')
+    tela02.classList.toggle('hidden')
+    window.scrollTo(0, 0);
+    id = res.id;
+    console.log(id);
+
+    let requestListaQuizzes = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    requestListaQuizzes.then(printar);
+    function printar(promise) {
+        listaQuizzes = promise.data;
+        for (let i = 0; i < promise.data.length; i++) {
+            if (listaQuizzes[i].id == id) {
+                tela01.classList.toggle("hidden");
+                tela02.classList.toggle("hidden");
+                tela02.innerHTML += `<section class="tituloQuizz">${listaQuizzes[i].title}</section>
+                <section class="fundoQuizz">
+                    <img src="${listaQuizzes[i].image} ">
+                </section>`;
+                for (let j = 0; j < listaQuizzes[i].questions.length; j++) {
+                    let zz = document.getElementById("critico-tela2");
+                    zz.innerHTML += `
+                <div class="centralizada">
+                    <div class="caixaDePerguntas" id = "${j}a">
+                        <div class="fundoPergunta" id = "${j}">
+
+                            <p>${listaQuizzes[i].questions[j].title}</p>
                         </div>
-                    </div>`
-                        shuffleArray(listaQuizzes[i].questions[j].answers);
-                        for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
-                            let zzz = document.getElementById(j + "a");
-                            let zzzz = document.getElementById(j);
-                            zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
-                            if (listaQuizzes[i].questions[j].answers[k].isCorrectAnswer == true) {
-                                zzz.innerHTML += `<div class="alternativa correta" onclick = "checarAlternativa(this)" id = "${k}b">
+                    </div>
+                </div>`
+                    shuffleArray(listaQuizzes[i].questions[j].answers);
+                    for (let k = 0; k < listaQuizzes[i].questions[j].answers.length; k++) {
+                        let zzz = document.getElementById(j + "a");
+                        let zzzz = document.getElementById(j);
+                        zzzz.style.backgroundColor = listaQuizzes[i].questions[j].color;
+                        if (listaQuizzes[i].questions[j].answers[k].isCorrectAnswer == true) {
+                            zzz.innerHTML += `<div class="alternativa correta" onclick = "checarAlternativa(this)" id = "${k}b">
+                        <img src="${listaQuizzes[i].questions[j].answers[k].image}">
+                        ${listaQuizzes[i].questions[j].answers[k].text}
+                    </div>`;
+                        }
+                        else {
+                            zzz.innerHTML += `<div class="alternativa incorreta" onclick = "checarAlternativa(this)" id = "${k}b">
                             <img src="${listaQuizzes[i].questions[j].answers[k].image}">
                             ${listaQuizzes[i].questions[j].answers[k].text}
                         </div>`;
-                            }
-                            else {
-                                zzz.innerHTML += `<div class="alternativa incorreta" onclick = "checarAlternativa(this)" id = "${k}b">
-                                <img src="${listaQuizzes[i].questions[j].answers[k].image}">
-                                ${listaQuizzes[i].questions[j].answers[k].text}
-                            </div>`;
-    
-                            }
-    
+
                         }
-    
+
                     }
-                    console.log("é esse mesmo " + id);
-                    console.log(listaQuizzes[i].title);
+
                 }
-    
+             
             }
+
         }
-        let fundoTela02 = document.getElementById("critico-tela2");
-        fundoTela02.children[1].scrollIntoView();
     }
+    let fundoTela02 = document.getElementById("critico-tela2");
+    fundoTela02.children[1].scrollIntoView();
+}
 
 
 
@@ -431,7 +431,6 @@ function reiniciarQuizz() {
     console.log(filhos);
     for (let i = 0; i < filhos.length; i++) {
         let netos = filhos[i].children[0].children;
-        console.log(netos);
         for (let j = 1; j < netos.length; j++) {
             netos[j].style.color = "black";
             netos[j].style.opacity = 1;
@@ -443,7 +442,6 @@ function reiniciarQuizz() {
 function voltarHome() {
     window.scrollTo(0,0);
     let fundoTela02 = document.getElementById("critico-tela2");
-    console.log('botao dibas');
     fundoTela02.innerHTML = "";
     tela01.classList.toggle("hidden");
     tela02.classList.toggle('hidden');
@@ -470,9 +468,6 @@ function checarAlternativa(alternativa) {
             }, 2000);
             setTimeout(() => {
                 if (contador == stop) {
-                    console.log("agr é pra printar");
-                    console.log(listaQuizzes[i]);
-                    console.log((corretas / contador) * 100);
                     for (let j = listaQuizzes[i].levels.length - 1; j >= 0; j--) {
                         if ((corretas / contador) * 100 >= listaQuizzes[i].levels[j].minValue) {
                             console.log(listaQuizzes[i].levels[j]);
@@ -541,7 +536,6 @@ function abrirQuizz(res) {
     requestListaQuizzes.then(printar);
     function printar(promise) {
         listaQuizzes = promise.data;
-        console.log(listaQuizzes);
         for (let i = 0; i < promise.data.length; i++) {
             if (listaQuizzes[i].id == id) {
                 tela01.classList.toggle("hidden");
@@ -583,8 +577,7 @@ function abrirQuizz(res) {
                     }
 
                 }
-                console.log("é esse mesmo " + id);
-                console.log(listaQuizzes[i].title);
+            
             }
 
         }
@@ -690,7 +683,7 @@ function renderizarQuizzes(){
     for (let i = 0; i < listaQuizzesTela01.length; i++){
         let imagemComTitulo = document.querySelector(".containerAPI");
         let imagemComTituloDaVez = listaQuizzesTela01[i];
-        imagemComTitulo.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz">
+        imagemComTitulo.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz" id = "${listaQuizzesTela01[i].id}">
         <img class="imagemQuizz"
             src="${imagemComTituloDaVez.image}">
             
