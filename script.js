@@ -649,7 +649,7 @@ function sucessoBuscarUsuario(quizzesServidorUsuario){
     let imagemComTituloUsuario = document.querySelector(".containerUsuario");
     let imagemComTituloDaVez = quizzesServidorUsuario.data;
 
-    imagemComTituloUsuario.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz" id = "${listaQuizzesTela01[i].id}">
+    imagemComTituloUsuario.innerHTML += `<div onclick="abrirQuizz(this)" class="inicioQuizz" id = "${imagemComTituloDaVez.id}">
     <img class="imagemQuizz"
         src="${imagemComTituloDaVez.image}">
     <h4>${imagemComTituloDaVez.title}</h4>
